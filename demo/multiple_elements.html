@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../dist/between.js"></script>
+</head>
+<body>
+    <p><strong>Press space to re trigger the animation (keep space pressed to flood!)</strong></p>
+    <canvas id="canvas" width="1024" height="768"></canvas>
+
+    <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var squares = [];
+
+    var Square = function(left, top, width, height, color) {
+        this.width = width;
+        this.height = height;
+
+        this.left = left;
+        this.top = top;
+        this.color = color;
+    }
+
+    Square.prototype.draw = function() {
+        ctx.save();
+
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.left, this.top, this.width, this.height);
+
+        ctx.restore();
+    }
+
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let square of squares) {
+            square.draw();
+        }
+        
+        window.requestAnimationFrame(draw);
+    }
+
+    draw();
+
+
+    for (var i = 0; i < 500; i++) {
+        squares.push(
+            new Square(Math.random() * (canvas.width-50), // left
+                Math.random() * (canvas.height-50), // top
+                50, 50, // width, height
+                "rgba(150, 0, 0, 0.5)")
+        );
+    }
+
+    function animate() {
+
+        Between.block(1500, Between.easing.Elastic.Out, (...squares) => {
+
+            for (let square of squares) {
+                /* randomly change left and top */
+                square.left = Math.random() * (canvas.width-50);
+                square.top = Math.random() * (canvas.height-50);
+            }
+
+        }, ...squares);
+    }
+
+    animate();
+
+    document.addEventListener("keypress", function(ev) {
+        if (ev.charCode == 32) {
+            ev.preventDefault();
+            animate();
+        }
+    })
+
+    </script>
+
+</body>
+</html>
