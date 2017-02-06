@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../dist/between.js"></script>
+</head>
+<body>
+    <style>
+        .square {
+            position: absolute;
+        }
+    </style>
+    <div class="square" id="square_one" style="height: 100px; width: 100px; left: 100px; top: 100px; background-color: red"></div>
+    <div class="square" id="square_two" style="height: 100px; width: 100px; left: 400px; top: 100px;  background-color: blue"></div>
+
+    <script>
+
+        var square_one = document.getElementById("square_one").style;
+        var square_two = document.getElementById("square_two").style;
+
+        Between.block(3000, Between.easing.Elastic.Out, (square_one, square_two) => {
+
+            // Swap the left of the two element using destructuring array.
+            [square_one.left, square_two.left] = [square_two.left, square_one.left]
+
+        }, square_one, square_two);
+
+    </script>
+
+</body>
+</html>
