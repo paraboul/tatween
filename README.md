@@ -3,8 +3,7 @@
 `Between` is JavaScript animation library providing Cocoa-like Animation block.  
 
 It was made possible thanks to [ES6-Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).  
-
-I started to wrote this library as the default Animation library for [nidium project](https://github.com/nidium/Nidium)
+I started to wrote this library as a Proof of Concept for the default Animation library for [nidium project](https://github.com/nidium/Nidium)
 
 ## Block-Based Animations
 
@@ -46,6 +45,11 @@ Between.block(1000, Between.easing.Bounce.Out, (square) => {
 ```
 
  ![Example 2](https://github.com/paraboul/between/blob/master/gifs/swap.gif?raw=true)
+
+## Supported browsers
+
+`Between` needs various ES6 features (Proxy, Spread syntax (rest parameters), arrow function) in order to work.  
+As of today, it seems to work on last release of major browsers and in the [nidium project engine](https://www.github.com/nidium/Nidium) 
 
 ## Usage
 
