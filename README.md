@@ -51,6 +51,10 @@ Between.block(1000, Between.easing.Bounce.Out, (square) => {
 `Between` needs various ES6 features (Proxy, Spread syntax (rest parameters), arrow function) in order to work.  
 As of today, it seems to work on last release of major browsers and in the [nidium project engine](https://www.github.com/nidium/Nidium) 
 
+## Download
+
+[between.js](https://raw.githubusercontent.com/paraboul/between/master/dist/between.js)
+
 ## Usage
 
 Include between.js in your page:
