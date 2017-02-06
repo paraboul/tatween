@@ -38,7 +38,7 @@ Between.block(1000, Between.easing.Bounce.Out, (square /* Proxy wrapped element 
  
  ![Example 1](https://github.com/paraboul/between/blob/master/gifs/example1.gif?raw=true)
  
- Animate-swap the position of two elements. Just swap their left values.
+ Swap the position of two elements. Just swap their left properties.
  ```javascript
  Between.block(3000, Between.easing.Elastic.Out, (square_one, square_two) => {
 
