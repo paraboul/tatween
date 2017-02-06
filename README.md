@@ -29,10 +29,9 @@ Between.block(1000, Between.easing.Bounce.Out, (square) => {
     square.left += 200;
 
 }, square);
-
-
-
  ```
+ 
+ ![Example 1](https://github.com/paraboul/between/blob/master/gifs/example1.gif?raw=true)
  
  Animate-swap the position of two elements. Just swap their left values.
  ```javascript
@@ -43,3 +42,5 @@ Between.block(1000, Between.easing.Bounce.Out, (square) => {
 
 }, square_one, square_two); // Give any number of elements
 ```
+
+ ![Example 2](https://github.com/paraboul/between/blob/master/gifs/swap.gif?raw=true)
