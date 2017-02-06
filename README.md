@@ -2,7 +2,9 @@
 
 `Between` is JavaScript animation library providing Cocoa-like Animation block.  
 
-It was made possible thanks to [ES6-Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).
+It was made possible thanks to [ES6-Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).  
+
+I started to wrote this library as the default Animation library for [nidium project](https://github.com/nidium/Nidium)
 
 ## Block-Based Animations
 
@@ -44,3 +46,65 @@ Between.block(1000, Between.easing.Bounce.Out, (square) => {
 ```
 
  ![Example 2](https://github.com/paraboul/between/blob/master/gifs/swap.gif?raw=true)
+
+## Usage
+
+Include between.js in your page:
+
+```html
+<script src="between.js"></script>
+```
+
+Animate any property (really anything as long as it's backed by a number)
+
+```javascript
+Between.block(1000 /* duration in ms */, Between.easing.Bounce.Out /* Easing function */, (obj) => {
+    // Animate anything in `obj`
+}, obj);
+```
+
+Available Easing function :
+
+```
+Linear.None
+
+Quadratic.In
+Quadratic.Out
+Quadratic.InOut
+
+Cubic.In
+Cubic.Out
+Cubic.InOut
+
+Quartic.In
+Quartic.Out
+Quartic.InOut
+
+Quintic.In
+Quintic.Out
+Quintic.InOut
+
+Sinusoidal.In
+Sinusoidal.Out
+Sinusoidal.InOut
+
+Exponential.In
+Exponential.Out
+Exponential.InOut
+
+Circular.In
+Circular.Out
+Circular.InOut
+
+Elastic.In
+Elastic.Out
+Elastic.InOut
+
+Back.In
+Back.Out
+Back.InOut
+
+Bounce.In
+Bounce.Out
+Bounce.InOut
+```
