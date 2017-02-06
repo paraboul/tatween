@@ -49,6 +49,10 @@ Between.block(1000, Between.easing.Bounce.Out, (square /* Proxy wrapped element 
 ```
 
  ![Example 2](https://github.com/paraboul/between/blob/master/gifs/swap.gif?raw=true)
+ 
+## Online demos
+
+- [Multiple elements / canvas](http://p.nf/between/multiple_elements.html)
 
 ## Supported browsers
 
