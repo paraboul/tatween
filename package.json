@@ -1,0 +1,25 @@
+{
+  "name": "between",
+  "version": "1.0.0",
+  "description": "ES6 Proxy-based JavaScript animation library with API similar to Cocoa Animation block",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paraboul/between.git"
+  },
+  "keywords": [
+    "animation"
+  ],
+  "author": "Anthony Catel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paraboul/between/issues"
+  },
+  "homepage": "https://github.com/paraboul/between#readme"
+}
