@@ -112,3 +112,7 @@ Bounce.In
 Bounce.Out
 Bounce.InOut
 ```
+
+## License
+
+Copyright 2017 Anthony Catel. All rights reserved. Use of this source code is governed by a MIT license that can be found in the LICENSE file.
