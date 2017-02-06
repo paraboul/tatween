@@ -76,7 +76,7 @@ var Between = function(duration, ease, callback, ...objs)
             },
 
             get: (target, prop, rcv) => {
-                return target[prop];
+                return parseFloat(target[prop]);
             }
         });
 
