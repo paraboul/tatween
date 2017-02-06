@@ -13,10 +13,12 @@ Animations block are a way to express animations in a declarative way. They are 
 ## Examples 
 
 ```javascript
+// The code inside the block only run once.
+// Here `square` in the original one wrapped by a Proxy
 Between.block(1000, Between.easing.Bounce.Out, (square) => {
     /*
         This block define the "end values".
-        The animation will tween from their initial values to the end values described here
+        Between will tween them from their initial values to the end values described here
     */
 
     /* Set the end value for top and width. */
