@@ -1,7 +1,9 @@
 type EasingFunc = (k: number) => number;
 
+type animationBlock<T> = (...objs: T) => animationBlock<T> | undefined
+
 export function start() : void;
-export function tatween<T>(duration: number, easeing: EasingFunc, callback: (...objs: T) => void, ...objs: T) : number;
+export function tatween<T>(duration: number, easeing: EasingFunc, callback: animationBlock<T>, ...objs: T) : (() => void) | undefined;
 
 interface Ops {
     In: EasingFunc
