@@ -1,14 +1,15 @@
 # tatween
 
-`tatween` is a JavaScript library providing a block-based animation API. This is inspired by [Cocoa style animation][https://developer.apple.com/documentation/uikit/uiview/1622515-animatewithduration]
+`tatween` is a JavaScript library providing a block-based animation API.
  
 ## Block-Based Animations
 
-Animations block are a way to express animations in am imperative way. They are used in the [Apple cocoa framework](https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/AnimatingViews/AnimatingViews.html) 
+Animations block are a way to express animations in an imperative way allowing for a better flexibility.  
+They are used in the [Apple cocoa framework](https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/AnimatingViews/AnimatingViews.html) 
 
-That is, the idea is to enter a special scope where all the values set are animated. This allows for a better flexibility and imperative style control on what needs to be animated.
+That is, the idea is to enter a special scope where all the values set are animated.
 
-It was made possible thanks to [ES6-Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). 
+Under the hood the library is using [ES6-Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) to listen for values change inside the anomation scope. 
 
 ## Examples 
 
@@ -78,7 +79,7 @@ Animate any property (really anything as long as it's backed by a number)
 ```javascript
 tatween(1000 /* duration in ms */, Easing.Bounce.Out /* Easing function */, (obj_A, obj_B, obj_C) => {
     // Animate anything from obj_A/obj_B/obj_C :
-    
+
     // obj_A.width = "42px";
     // obj_B.left = 30;
     // obj_C.top = obj_A.top
