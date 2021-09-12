@@ -1,13 +1,9 @@
 const AnimationsList = new Set();
 
-let running = false;
+let isRunning = false;
 const canRun = typeof window !== 'undefined';
 
 function draw() {
-    if (!canRun) {
-        return;
-    }
-
     const curDate = +new Date();
 
     for (let anim of AnimationsList) {
@@ -40,12 +36,12 @@ function draw() {
 
     if (AnimationsList.size) {
         window.requestAnimationFrame(draw);
-        running = true;
+        isRunning = true;
 
         return;
     }
 
-    running = false;
+    isRunning = false;
 }
 
 export function tatween(duration, ease, callback, ...objs)
@@ -60,9 +56,9 @@ export function tatween(duration, ease, callback, ...objs)
 
     AnimationsList.add(anim);
 
-    if (!running && canRun) {
+    if (!isRunning && canRun) {
         window.requestAnimationFrame(draw);
-        running = true;
+        isRunning = true;
     }
 
     for (let obj of objs) {
