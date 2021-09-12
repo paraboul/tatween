@@ -1,6 +1,6 @@
 {
   "name": "tatween",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ES6 Proxy-based JavaScript animation library with API similar to Cocoa Animation block",
   "main": "index.js",
   "type": "module",
