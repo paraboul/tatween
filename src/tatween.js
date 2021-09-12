@@ -1,56 +1,69 @@
-const Easing = require("./easing");
+const AnimationsList = new Set();
 
-var AnimationsList = new Set();
+let running = false;
+const canRun = typeof window !== 'undefined';
 
-{
-    let draw = function() {
-        var curDate = +new Date();
-
-        for (let anim of AnimationsList) {
-            let { end, start, ease, list, duration } = anim;
-            let e = ease((curDate - start) / (end - start));
-            let finish = (curDate > end);
-
-            for (let elem of list) {
-                let { target, property, value, startValue, isPx } = elem;
-                let targetProperty = finish
-                                     ? value
-                                     : startValue + ((value - startValue) * e);
-
-                if (isPx) {
-                    targetProperty += "px";
-                }
-
-                target[property] = targetProperty;
-            }
-
-            if (finish) {
-                if (anim.next) {
-                    anim.redo(anim.next);
-                } else {
-                    anim.finish();
-                    AnimationsList.delete(anim);
-                }
-            }
-        }
-
-        window.requestAnimationFrame(draw);
+function draw() {
+    if (!canRun) {
+        return;
     }
 
-    draw();
+    const curDate = +new Date();
+
+    for (let anim of AnimationsList) {
+        const { end, start, ease, list, duration } = anim;
+        const e = ease((curDate - start) / (end - start));
+        const finish = (curDate > end);
+
+        for (let elem of list) {
+            const { target, property, endValue, startValue, isPx } = elem;
+            let targetProperty = finish
+                                    ? endValue
+                                    : startValue + ((endValue - startValue) * e);
+
+            if (isPx) {
+                targetProperty += "px";
+            }
+
+            target[property] = targetProperty;
+        }
+
+        if (finish) {
+            if (anim.next) {
+                anim.redo(anim.next);
+            } else {
+                anim.finish();
+                AnimationsList.delete(anim);
+            }
+        }
+    }
+
+    if (AnimationsList.size) {
+        window.requestAnimationFrame(draw);
+        running = true;
+
+        return;
+    }
+
+    running = false;
 }
 
-var Between = function(duration, ease, callback, ...objs)
+export function tatween(duration, ease, callback, ...objs)
 {
-    var proxies = [];
-    var anim = {
+    const proxies = [];
+    const anim = {
         duration,
         ease,
         objs,
-        finish: function(){},
+        finish: () => {},
     };
 
     AnimationsList.add(anim);
+
+    if (!running && canRun) {
+        window.requestAnimationFrame(draw);
+        running = true;
+    }
 
     for (let obj of objs) {
         let proxy = new Proxy(obj, {
@@ -68,7 +81,7 @@ var Between = function(duration, ease, callback, ...objs)
                     startValue: parseFloat(targetProperty),
                     target,
                     property,
-                    value: parseFloat(value),
+                    endValue: parseFloat(value),
                     isPx
                 })
                 
@@ -89,7 +102,7 @@ var Between = function(duration, ease, callback, ...objs)
         // Reset some state since we're using the same object when chaining
         Object.assign(anim, {start, end: start+duration, list: [], next: null});
 
-        // heck whether we have a chained animation
+        // check whether we have a chained animation
         let next = callback(...proxies);
         if (typeof next == 'function') {
             anim.next = next;
@@ -100,9 +113,4 @@ var Between = function(duration, ease, callback, ...objs)
     return function(animationFinished) {
         anim.finish = animationFinished;
     }
-}
-
-module.exports = {
-    block: Between,
-    easing: Easing
 }

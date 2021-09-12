@@ -1,3 +1,4 @@
-const Between = require("./src/between");
+export * from './src/tatween.js';
+import Easing from './src/easing';
 
-module.exports = Between;
+export const Easing = Easing;

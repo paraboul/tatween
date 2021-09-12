@@ -3,7 +3,7 @@
     JavaScript from Phaser <https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License>
 
 */
-var Easing = module.exports = {
+export default {
 
     /**
     * Linear easing.

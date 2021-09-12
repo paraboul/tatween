@@ -1,8 +1,16 @@
 {
-  "name": "between",
-  "version": "1.0.0",
+  "name": "tatween",
+  "version": "0.0.1",
   "description": "ES6 Proxy-based JavaScript animation library with API similar to Cocoa Animation block",
   "main": "index.js",
+  "type": "module",
+  "types": "./@types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "src",
+    "@types/index.d.ts",
+    "index.js"
+  ],
   "dependencies": {},
   "devDependencies": {
   },
@@ -11,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paraboul/between.git"
+    "url": "git+https://github.com/paraboul/tatween.git"
   },
   "keywords": [
     "animation"
@@ -19,7 +27,7 @@
   "author": "Anthony Catel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/paraboul/between/issues"
+    "url": "https://github.com/paraboul/tatween/issues"
   },
-  "homepage": "https://github.com/paraboul/between#readme"
+  "homepage": "https://github.com/paraboul/tatween#readme"
 }
