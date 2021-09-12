@@ -56,11 +56,8 @@ tatween(1000, Easing.Bounce.Out, (square /* Proxy wrapped element */) => {
 - [Multiple elements / canvas](http://p.nf/between/multiple_elements.html)
 
 
-## Download
-
-[tatween.js](https://raw.githubusercontent.com/paraboul/tatween/master/dist/tatween.js)
-
 ## Usage
+
 
 install:
 
