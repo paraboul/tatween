@@ -51,8 +51,12 @@ export function tatween(duration, ease, callback, ...objs)
         duration,
         ease,
         objs,
-        finish: () => {},
+        finish: (value) => {},
     };
+
+    const finish = new Promise((resolve, reject) => {
+        anim.finish = resolve
+    });
 
     AnimationsList.add(anim);
 
@@ -106,7 +110,5 @@ export function tatween(duration, ease, callback, ...objs)
 
     })(callback);
 
-    return function(animationFinished) {
-        anim.finish = animationFinished;
-    }
+    return finish
 }
