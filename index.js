@@ -1,2 +1,2 @@
 export * from './src/tatween.js';
-export { default as Easing } from './src/easing';
+export { default as Easing } from './src/easing.js';
